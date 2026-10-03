@@ -32,24 +32,24 @@ institute: "Группа: НПИ-01-23 Zetta"
 `195.239.174.25` (`portal.ampire.corp`). Проверка сервисов показала доступность HTTP на TCP/80;
 HTTPS на TCP/443 был отфильтрован.
 
-![Рис. 1 — Обнаружение активных узлов; 195.239.174.12 исключён из проверки](images/00-external-host-discovery.png){#fig-001 width=80%}
+![Рис. 1 — Обнаружение активных узлов; 195.239.174.12 исключён из проверки](image/00-external-host-discovery.png){#fig-001 width=80%}
 
-![Рис. 2 — Сервисы веб-сервера: HTTP открыт, HTTPS фильтруется](images/01b-web-service-scan.png){#fig-002 width=80%}
+![Рис. 2 — Сервисы веб-сервера: HTTP открыт, HTTPS фильтруется](image/01b-web-service-scan.png){#fig-002 width=80%}
 
 ## 3.2. Исследование WordPress
 
 На портале обнаружена публикация WordPress «IT is magic» по адресу
 `/index.php/2021/07/26/hello-world/`.
 
-![Рис. 3 — Публикация «IT is magic» на портале portal.ampire.corp](images/02-wordpress-post.png){#fig-003 width=90%}
+![Рис. 3 — Публикация «IT is magic» на портале portal.ampire.corp](image/02-wordpress-post.png){#fig-003 width=90%}
 
 Сканер Metasploit определил WordPress версии 5.8.2 и плагин wpDiscuz версии 7.0.2. Поиск модулей
 Metasploit показал наличие модуля проверки уязвимости неаутентифицированной загрузки файла в
 wpDiscuz.
 
-![Рис. 4 — Результаты сканирования WordPress и обнаруженные плагины](images/01-wordpress-scan.png){#fig-004 width=90%}
+![Рис. 4 — Результаты сканирования WordPress и обнаруженные плагины](image/01-wordpress-scan.png){#fig-004 width=90%}
 
-![Рис. 5 — Найденный модуль проверки уязвимости wpDiscuz](images/03-module-found.png){#fig-005 width=90%}
+![Рис. 5 — Найденный модуль проверки уязвимости wpDiscuz](image/03-module-found.png){#fig-005 width=90%}
 
 # 4. Получение доступа к веб-серверу
 
@@ -60,7 +60,7 @@ wpDiscuz.
 `195.239.174.25`, виртуальный хост `portal.ampire.corp`, путь к публикации и адрес интерфейса
 Kali для обратного соединения.
 
-![Рис. 6 — Параметры модуля для проверки WordPress](images/04-exploit-options.png){#fig-006 width=95%}
+![Рис. 6 — Параметры модуля для проверки WordPress](image/04-exploit-options.png){#fig-006 width=95%}
 
 ## 4.2. Получение Meterpreter-сессии
 
@@ -68,9 +68,9 @@ Kali для обратного соединения.
 сессия Meterpreter от имени пользователя веб-сервера `www-data`. Затем сессия была преобразована
 в расширенную Meterpreter-сессию.
 
-![Рис. 7 — Успешное открытие Meterpreter-сессии](images/02-exploit-session.png){#fig-007 width=95%}
+![Рис. 7 — Успешное открытие Meterpreter-сессии](image/02-exploit-session.png){#fig-007 width=95%}
 
-![Рис. 8 — Повышение исходной сессии до расширенной Meterpreter-сессии](images/06-session-upgrade.png){#fig-008 width=95%}
+![Рис. 8 — Повышение исходной сессии до расширенной Meterpreter-сессии](image/06-session-upgrade.png){#fig-008 width=95%}
 
 # 5. Переход во внутреннюю сеть
 
@@ -80,11 +80,11 @@ Kali для обратного соединения.
 Через сессию добавлен маршрут к сети `10.10.10.0/24`. Проверка внутреннего сегмента обнаружила
 несколько активных адресов, в том числе `10.10.10.30` и `10.10.10.45`.
 
-![Рис. 9 — Внутренний интерфейс и таблица маршрутизации веб-сервера](images/07-ipconfig-route.png){#fig-009 width=95%}
+![Рис. 9 — Внутренний интерфейс и таблица маршрутизации веб-сервера](image/07-ipconfig-route.png){#fig-009 width=95%}
 
-![Рис. 10 — Добавление маршрута к сети 10.10.10.0/24](images/03-route-added.png){#fig-010 width=90%}
+![Рис. 10 — Добавление маршрута к сети 10.10.10.0/24](image/03-route-added.png){#fig-010 width=90%}
 
-![Рис. 11 — Результаты обнаружения узлов внутренней сети](images/04-internal-hosts.png){#fig-011 width=90%}
+![Рис. 11 — Результаты обнаружения узлов внутренней сети](image/04-internal-hosts.png){#fig-011 width=90%}
 
 ## 5.2. Настройка SOCKS-прокси
 
@@ -92,13 +92,13 @@ Kali для обратного соединения.
 Proxychains настроен использовать этот локальный прокси. Прослушивание порта и наличие фоновой
 задачи прокси были проверены отдельно.
 
-![Рис. 12 — Параметры SOCKS5-прокси Metasploit](images/05-socks-proxy.png){#fig-012 width=95%}
+![Рис. 12 — Параметры SOCKS5-прокси Metasploit](image/05-socks-proxy.png){#fig-012 width=95%}
 
-![Рис. 13 — Настройка Proxychains на SOCKS5 127.0.0.1:1080](images/08-proxychains-settings.png){#fig-013 width=85%}
+![Рис. 13 — Настройка Proxychains на SOCKS5 127.0.0.1:1080](image/08-proxychains-settings.png){#fig-013 width=85%}
 
-![Рис. 14 — Локальный SOCKS-прокси слушает порт 1080](images/09-proxy-listening.png){#fig-014 width=90%}
+![Рис. 14 — Локальный SOCKS-прокси слушает порт 1080](image/09-proxy-listening.png){#fig-014 width=90%}
 
-![Рис. 15 — Фоновая задача SOCKS-прокси и активные сессии](images/10-jobs-sessions.png){#fig-015 width=95%}
+![Рис. 15 — Фоновая задача SOCKS-прокси и активные сессии](image/10-jobs-sessions.png){#fig-015 width=95%}
 
 # 6. Доступ к MariaDB и получение флага
 
@@ -106,13 +106,13 @@ Proxychains настроен использовать этот локальны�
 `10.10.10.30` и `10.10.10.45`. На узле `10.10.10.45` аутентификация не прошла. Успешное
 подключение к MariaDB было установлено на сервере `10.10.10.30`.
 
-![Рис. 16 — Проверка доступности MariaDB на 10.10.10.30 через Proxychains](images/06-mysql-port.png){#fig-016 width=90%}
+![Рис. 16 — Проверка доступности MariaDB на 10.10.10.30 через Proxychains](image/06-mysql-port.png){#fig-016 width=90%}
 
 В списке баз данных сервера присутствовала база `Flag`. После её выбора команда просмотра
 таблиц показала таблицу `fpawq`. В таблице нет строк; согласно завершающему примеру методических
 указаний контрольным значением является имя таблицы.
 
-![Рис. 17 — Таблица fpawq в базе Flag; имя таблицы является флагом](images/07-flag-database.png){#fig-017 width=80%}
+![Рис. 17 — Таблица fpawq в базе Flag; имя таблицы является флагом](image/07-flag-database.png){#fig-017 width=80%}
 
 **Полученный флаг: `fpawq`.**
 
